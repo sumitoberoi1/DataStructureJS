@@ -14,7 +14,7 @@ class Queue {
     * @param {*} value the value to enqueue
     */
     enqueue(element) {
-      this._storage[this._length] = element
+      this._storage[this._length+this._head] = element
       this._length += 1
     }
   
@@ -43,4 +43,6 @@ class Queue {
   queue.enqueue(12)
   queue.enqueue(3)
   queue.dequeue()
-  console.log(queue.peek())
+  console.log(queue)
+  queue.enqueue(4)
+  console.log(queue)
