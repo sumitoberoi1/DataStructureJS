@@ -2,7 +2,7 @@
 
 class HashTable {
     constructor() {
-      this._storage = [];
+      this._storage = new Array(25).fill(0);
       this._tableSize = 25 //For Hashing
     }
     /*
@@ -16,7 +16,8 @@ class HashTable {
         const arr = this._storage[index]
         arr.push({key:key,value:value})
       } else {
-        this._storage.splice(index, 0, [{key:key,value:value}]);
+        console.log(this._storage[index])
+        this._storage[index] = [{key:key,value:value}]
       }
     }
     /*
@@ -30,7 +31,6 @@ class HashTable {
         const arr = this._storage[index]
         for (const aIndex in arr) {
           const collisonObject = arr[aIndex]
-          console.log(collisonObject)
           if (collisonObject["key"] === key) {
             arr.splice(aIndex, 1)
           }
@@ -72,5 +72,6 @@ class HashTable {
     }
   }
   
-  let hashTable = new HashTable()
- 
+let hashTable = new HashTable()
+hashTable.insert("one",12)
+console.log(hashTable.retrieve("one"))
